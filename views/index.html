@@ -1,20 +1,172 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
+    <link rel="stylesheet" type="text/css" href="../styles/index.css">
     <meta charset="UTF-8"> 
-    <title>Mi página personal</title>
+    <title>CityBike</title>
   </head>
   
   <body>
+    <h1>Bienvenido a la aplicación</h1>
+    <button onclick="redirectToRegister()">Registrar</button>
+
+    <script>
+        function redirectToRegister() {
+            window.location.href = "register.html";
+        }
+    </script>
   	<nav>
       <!--TODO Definir barra de navegacion-->
+      <ul>
+				<li><a href="#inicio">Inicio</a></li>
+				<li><a href="#descripcion">Descripcion</a></li>
+				<li><a href="#funcionalidades">Funcionalidades</a></li>
+				<li><a href="#categorias">Categorias</a></li>
+			</ul>
     </nav>
     <article>
       <!-- Definir article-->
       <section>
-        <!--Definir sections-->
+        <section id="descripcion">
+          <h2>Descripcion</h2>
+          <p>
+            <strong>CityBike</strong> es una plataforma innovadora dedicada al
+            alquiler de bicicletas, disenada para satisfacer las necesidades de
+            movilidad sostenible de los ciudadanos. Esta pagina web ofrece una
+            solucion eficiente y respetuosa con el medio ambiente para aquellos
+            que buscan una alternativa comoda y ecologica para sus
+            desplazamientos urbanos.
+          </p>
+          <details>
+            <summary>Detalles</summary>
+            <p>CityBike se enorgullece de ofrecer mas alla del simple
+              servicio de alquiler de bicicletas. La plataforma busca
+              proporcionar una experiencia integral para los usuarios,
+              promoviendo la movilidad sostenible y fomentando un estilo de vida
+              activo.</p>
+          </details>
+          <img src="../images/LogoCityBike.png" alt="Logo CityBike">
+          <p>La imagen consta de dos elementos:</p>
+          <ul style="list-style-type: disc;">
+            <li>Logo de una bicicleta</li>
+            <li>Texto con el nombre de la web</li>
+          </ul>
+        </section>
+        <section>
+          <h2>Caracteristicas Principales</h2>
+          <ul>
+            <li>Alquiler de Bicicletas de Diversos Tipos</li>
+            <li>Registro de Usuarios con Perfiles Personalizados</li>
+            <li>Estaciones de Recogida y Devolucion Estrategicamente
+              Ubicadas</li>
+            <li>Tarifas Flexibles</li>
+            <li>Compromiso con la Seguridad y Mantenimiento</li>
+            <li>Mapas Interactivos para Planificacion de Rutas</li>
+            <li>Promocion de Estilo de Vida Saludable</li>
+          </ul>
+        </section>
+        <section id="funcionalidades">
+          <h2>Funcionalidades ofrecidas</h2>
+          <p>Descubre las increibles caracteristicas que hacen a CityBike
+            la mejor opcion para tu movilidad:</p>
+  
+          <details>
+            <summary>Estaciones Inteligentes</summary>
+            <p>Nuestras estaciones cuentan con tecnologia inteligente que
+              te permite ubicar y reservar bicicletas de manera facil y rapida.</p>
+          </details>
+          <ul>
+            <li>Alquiler de bicicletas convencionales y electricas.</li>
+            <li>Programa de recompensas por kilometros recorridos.</li>
+            <li>Eventos comunitarios y clases de ciclismo.</li>
+          </ul>
+          <section id="categorias">
+            <h2>Categorias Alquiler</h2>
+            <p>Selecciona la categoria de bicicleta que mejor se adapte a
+              tus necesidades y preferencias:</p>
+  
+            <details>
+              <summary>Bicicletas Electricas</summary>
+              <p>Experimenta una conduccion suave y eficiente con nuestras
+                bicicletas electricas. Ideal para distancias mas largas.</p>
+            </details>
+  
+            <ul>
+              <li>Bicicletas convencionales</li>
+              <li>Bicicletas electricas</li>
+              <li>Bicicletas para ninos</li>
+            </ul>
+          </section>
       </section>
     </article>
+    <aside id="aside">
+			<h2>Otras paginas relacionadas</h2>
+			<ul>
+				<li><a
+					href="https://www.focus-bikes.com/es_es/bikes/mountainbike-doble-suspension?gad_source=1&gclid=CjwKCAiAtt2tBhBDEiwALZuhAMi9TGrk6NiXousZo1wpL5E9zgUpdZHAoULt8WY4lmWmqs8VQuXI0xoCdgEQAvD_BwE&hc_fcv=ZbfrCBSuhiBl33gI~NPTf1837DiRDq-54zzzzzzzz~NPTf1677DlFLS-5Gzzzzzzzz\"
+					target="_blank">Descubre los modelos de MTB</a></li>
+				<li><a
+					href="https://es.wikiloc.com/rutas/mountain-bike/espana/murcia/murcia"
+					target="_blank">Mejores rutas para ciclismo</a></li>
+				<li><a
+					href="https://www.alltrails.com/es/spain/murcia--3/road-biking"
+					target="_blank">Las mejores rutas de ciclismo de carretera en
+						Murcia </a></li>
+			</ul>
+
+		</aside>
+
+		<table border="1">
+			<caption>Alquiler de bicis</caption>
+			<thead>
+				<tr>
+					<th>Categoria</th>
+					<th>Primavera</th>
+					<th>Verano</th>
+					<th>Otono</th>
+					<th>Invierno</th>
+
+				</tr>
+			</thead>
+
+			<tbody>
+				<tr>
+					<td>Infantil</td>
+					<td rowspan="2">2$/dia</td>
+					<td>5$/dia</td>
+					<td>2$/dia</td>
+					<td rowspan="3">1$/dia</td>
+				</tr>
+				<tr>
+					<td>Adolescente</td>
+					<td rowspan="2">10$/dia</td>
+					<td>3$/dia</td>
+				</tr>
+				<tr>
+					<td>Adulto</td>
+					<td>5$/dia</td>
+					<td>5$/dia</td>
+				</tr>
+				<tr>
+					<td>Electrica</td>
+					<td>20$/dia</td>
+					<td>50$/dia</td>
+					<td>20$/dia</td>
+					<td>10$/dia</td>
+				</tr>
+			</tbody>
+
+			<tfoot>
+				<tr>
+					<td colspan="5">Precios 2023-2024</td>
+				</tr>
+			</tfoot>
+		</table>
+	</div>
+		<footer class="footerflex">
+			<p>2023/24 Desarrollo de Aplicaciones Web</p>
+		</footer>
+	</div>
   </body>
 </html>
 
