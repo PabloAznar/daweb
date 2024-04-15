@@ -1,0 +1,62 @@
+/* Estilos para el grid container */
+div {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr); /* Tress columnas */
+    grid-template-rows: auto auto 1fr auto; /* Cuatro filas: cabecera, barra de navegación, contenido, pie de página */
+    grid-gap: 10px; /* Espacio entre las celdas */
+}
+
+/* Estilos para la cabecera */
+header {
+    grid-column: 1 / span 3; /* Ocupa tres columnas */
+    text-align: center;
+    background-color: #025587;
+    color: #FFFFFF;
+    grid-row: 1; /* Ocupa la primera fila */
+}
+
+/* Estilos para la barra de navegación */
+nav {
+    grid-column: 1 / span 3; /* Ocupa tres columnas */
+    background-color: #29415D;
+    justify-content: space-around;
+    align-items: center;
+    grid-row: 2; /* Ocupa la segunda fila */
+}
+
+nav a {
+    text-decoration: none;
+    color: #FFFFFF;
+    padding: 10px;
+}
+
+nav a:hover {
+    background-color: #1C2C3E;
+}
+
+/* Estilos para el article */
+article {
+    grid-column: 1 / span 2; /* Ocupa dos columnas */
+    grid-row: 3; /* Ocupa la tercera fila */
+}
+
+/* Estilos para el aside */
+aside {
+    grid-column: 3; /* Ocupa la tercera columna */
+    grid-row: 3; /* Ocupa la tercera fila */
+}
+
+/* Estilos para la tabla */
+table {
+    grid-column: 1 / span 3; /* Ocupa tres columnas */
+    grid-row: 4; /* Ocupa la cuarta fila */
+}
+
+/* Estilos para el pie de página */
+footer {
+    grid-column: 1 / span 3; /* Ocupa tres columnas */
+    background-color: #29415D;
+    color: #FFFFFF;
+    text-align: center;
+    grid-row: 5; /* Ocupa la quinta fila */
+}
