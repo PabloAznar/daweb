@@ -1,0 +1,72 @@
+
+import React from 'react';
+import {useForm } from 'react-hook-form';
+
+function Register() {
+    const { control, register, handleSubmit } = useForm();
+
+    function onSubmit(data) {
+        console.log("Valores del formulario:", data);
+    }
+
+    return (
+        <div class="container mt-5">
+            <div class="row justify-content-center">
+                <div class="col-md-8">
+                    <div class="card">
+                        <div class="card-header">
+                            <h2 class="text-center">Registro</h2>
+                        </div>
+                        <div class="card-body">
+                            <form onSubmit={handleSubmit(onSubmit)}>
+                                <div class="form-group row">
+                                    <label for="nombre" class="col-sm-3 col-form-label">Nombre:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="nombre" name="nombre" required 
+                                        {...register('nombre')}/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="apellidos" class="col-sm-3 col-form-label">Apellidos:</label>
+                                    <div class="col-sm-9">
+                                        <input type="text" class="form-control" id="apellidos" name="apellidos" required
+                                        {...register('apellidos')}/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="correo" class="col-sm-3 col-form-label">Correo electrónico:</label>
+                                    <div class="col-sm-9">
+                                        <input type="email" class="form-control" id="correo" name="correo" required
+                                        {...register('correo')}/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="clave" class="col-sm-3 col-form-label">Clave:</label>
+                                    <div class="col-sm-9">
+                                        <input type="password" class="form-control" id="clave" name="clave" required
+                                        {...register('clave')}/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <label for="fechaNacimiento" class="col-sm-3 col-form-label">Fecha de nacimiento:</label>
+                                    <div class="col-sm-9">
+                                        <input type="date" class="form-control" id="fechaNacimiento"
+                                            name="fechaNacimiento" required
+                                            {...register('fechaNacimiento')}/>
+                                    </div>
+                                </div>
+                                <div class="form-group row">
+                                    <div class="col-sm-12 text-center">
+                                        <button type="submit" class="btn btn-primary">Registrarse</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
+export default Register;
