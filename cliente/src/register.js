@@ -3,10 +3,24 @@ import React from 'react';
 import {useForm } from 'react-hook-form';
 
 function Register() {
-    const { control, register, handleSubmit } = useForm();
+    const { register, handleSubmit } = useForm();
 
     function onSubmit(data) {
-        console.log("Valores del formulario:", data);
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(data)
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Error en la solicitud');
+            }
+        })
+        .catch(error => {
+            console.error('Error al realizar la solicitud:', error);
+        });
     }
 
     return (
