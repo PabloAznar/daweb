@@ -1,7 +1,7 @@
 import React from "react";
 import Footer from "./footer";
 import GestionBicicletas from "./GestionBicicletas";
-import Register from "./register";
+import RegistrarUsuario from "./RegistrarUsuario";
 import Header from "./header";
 import './App.css';
 
@@ -10,7 +10,7 @@ function App() {
     <div className="App">
     <Header />
     <main>
-    <Register></Register>
+    <RegistrarUsuario/>
     </main>
     <Footer />
   </div>
