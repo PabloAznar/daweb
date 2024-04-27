@@ -1,20 +1,16 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <link rel="stylesheet" type="text/css" href="../styles/index.css">
+    <link rel="stylesheet" type="text/css" href="./stylesheets/index.css">
     <meta charset="UTF-8"> 
     <title>CityBike</title>
   </head>
   
   <body>
     <h1>Bienvenido a la aplicación</h1>
-    <button onclick="redirectToRegister()">Registrar</button>
-
-    <script>
-        function redirectToRegister() {
-            window.location.href = "register.html";
-        }
-    </script>
+    <a class="nav-link" href="http://localhost:3000/registrar">
+      <button>Registrar</button>
+    </a>
   	<nav>
       <!--TODO Definir barra de navegacion-->
       <ul>
@@ -169,4 +165,3 @@
 	</div>
   </body>
 </html>
-
