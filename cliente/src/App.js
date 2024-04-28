@@ -4,16 +4,22 @@ import GestionBicicletas from "./GestionBicicletas";
 import RegistrarUsuario from "./RegistrarUsuario";
 import Header from "./header";
 import './App.css';
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 
 function App() {
   return (
     <div className="App">
-    <Header />
-    <main>
-    <RegistrarUsuario/>
-    </main>
-    <Footer />
-  </div>
+      <Header />
+      <main>
+        <BrowserRouter>
+          <Switch>
+            <Route path="/registrar" component={RegistrarUsuario}/>
+            <Route path="/citybike" component={GestionBicicletas}/>
+          </Switch>
+        </BrowserRouter>
+      </main>
+      <Footer />
+    </div>
   );
 }
 
