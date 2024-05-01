@@ -12,11 +12,12 @@ async function getConnection() {
 }
 
     async function registrarUsuario(connection, nombre, apellidos, correo, clave, fechaNacimiento) {
-        let result = connection.execute("INSERT INTO USUARIOS SET nombre = ?, apellidos = ?, correo = ?, clave = ?, fechaNacimiento = ?",
+        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, fechaNacimiento = ?",
   [nombre, apellidos, correo, clave, fechaNacimiento]);
 
         return result
     }
+
 
 
 exports.getConnection = getConnection
