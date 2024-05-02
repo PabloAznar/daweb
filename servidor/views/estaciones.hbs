@@ -1,0 +1,31 @@
+<div class="container features">
+    <h1>{{tittle}}</h1>
+
+    <table class="table">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Capacidad</th>
+                <th scope="col">Numero bicicletas</th>
+                <th scope="col">Codigo postal</th>
+                <th scope="col">Fecha alta</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each estacion}}
+            <tr>
+                <td>{{nombre}}</td>
+                <td>{{capacidad}}</td>
+                <td>{{numero_bicicletas}}</td>
+                <td>{{codigo_postal}}</td>
+                <td>{{fecha_alta}}</td>
+                <td>
+                    <button class="eliminar-btn" data-id="{{id}}">Eliminar</button>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="javascripts/eliminarEstacion.js"></script>
+</div>
