@@ -27,8 +27,8 @@ async function getConnection() {
     }
 
     async function eliminarEstacion(connection, id) {
-        let result = connection.execute("DELETE FROM ESTACION_APARCAMIENTO WHERE id = ?",
-    [id]);
+        connection.execute("DELETE FROM BICICLETA WHERE ESTACION = ?", [id])
+        let result = connection.execute("DELETE FROM ESTACION_APARCAMIENTO WHERE id = ?", [id]);
     return result;
     }
 
