@@ -14,7 +14,7 @@ async function getConnection() {
 }
 
     async function registrarUsuario(connection, nombre, apellidos, correo, clave, fechaNacimiento) {
-        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?  fecha_nacimiento = ?",
+        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?, fecha_nacimiento = ?",
   [nombre, apellidos, correo, clave, rol, fechaNacimiento]);
 
         return result
