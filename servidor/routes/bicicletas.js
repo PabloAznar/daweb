@@ -21,4 +21,28 @@ var app = express()
     .catch(error => {console.log(error)});
   });
 
+  router.get("/estacion/:idEstacion", function(req, res, next) {
+    let idEstacion = req.params.idEstacion;
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerBicicletas(con, idEstacion)
+    })
+    .then(data => {
+        res.render('bicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.delete("/:id", function(req, res, next) {
+    let idBicicleta = req.params.id
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.eliminarBicicletas(con, idBicicleta)
+    })
+    .then(result => {
+        res.send("Bicicleta eliminada")
+    })
+    .catch(error => {console.log(error)})
+  })
+
   module.exports = router;

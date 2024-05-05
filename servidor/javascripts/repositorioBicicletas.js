@@ -19,5 +19,16 @@ async function getConnection() {
         return result
     }
 
+    async function obtenerBicicletas(connection, idEstacion) {
+        let result = await connection.execute("SELECT * FROM BICICLETA ")
+        return result[0]
+    }
+
+    async function eliminarBicicletas(connection, idBicicleta) {
+        let result = connection.execute("DELETE FROM BICICLETA WHERE ID = ?", [idBicicleta])
+    }
+
 exports.getConnection = getConnection
 exports.registrarBicicleta = registrarBicicleta
+exports.obtenerBicicletas = obtenerBicicletas
+exports.eliminarBicicletas = eliminarBicicletas
