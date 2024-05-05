@@ -60,7 +60,6 @@ var app = express()
         return bbdd.obtenerEstaciones(con)
     })
     .then(data => {
-        console.log(data)
         res.render('estaciones', {'tittle' : 'estaciones', 'estacion' : data} )
     })
     .catch(error => {console.log(error)})
