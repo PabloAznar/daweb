@@ -1,5 +1,7 @@
 const mysql = require('mysql2/promise');
 
+const rol = "USUARIO"
+
 async function getConnection() {
     const connection = mysql.createConnection(
         {
@@ -12,8 +14,8 @@ async function getConnection() {
 }
 
     async function registrarUsuario(connection, nombre, apellidos, correo, clave, fechaNacimiento) {
-        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, fechaNacimiento = ?",
-  [nombre, apellidos, correo, clave, fechaNacimiento]);
+        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?  fecha_nacimiento = ?",
+  [nombre, apellidos, correo, clave, rol, fechaNacimiento]);
 
         return result
     }

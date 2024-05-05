@@ -1,6 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var bbdd = require('../javascripts/helper-database');
+var bbdd = require('../javascripts/respositorioUsuarios');
 
   var app = express()
   var bodyParser = require('body-parser');
