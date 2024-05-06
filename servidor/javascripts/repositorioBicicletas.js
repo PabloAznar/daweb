@@ -26,9 +26,16 @@ async function getConnection() {
 
     async function eliminarBicicletas(connection, idBicicleta) {
         let result = connection.execute("DELETE FROM BICICLETA WHERE ID = ?", [idBicicleta])
+        return result;
+    }
+
+    async function reservarBicicleta(connection, idBicicleta) {
+        let result = connection.execute("UPDATE BICICLETA SET RESERVADA = ? WHERE ID = ?", [true, idBicicleta])
+        return result;
     }
 
 exports.getConnection = getConnection
 exports.registrarBicicleta = registrarBicicleta
 exports.obtenerBicicletas = obtenerBicicletas
 exports.eliminarBicicletas = eliminarBicicletas
+exports.reservarBicicleta = reservarBicicleta

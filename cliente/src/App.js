@@ -5,6 +5,7 @@ import RegistrarUsuario from "./RegistrarUsuario";
 import Header from "./header";
 import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
+import ReservaBicicletas from "./ReservaBicicletas";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
           <Switch>
             <Route path="/registrar" component={RegistrarUsuario}/>
             <Route path="/citybike" component={GestionBicicletas}/>
+            <Route path="/estaciones/:idEstacion/bicicletas" component={ReservaBicicletas}/>
           </Switch>
         </BrowserRouter>
       </main>

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bbdd = require("../javascripts/repositorioBicicletas")
+var bbddReservas = require("../javascripts/repositorioReservas")
 
 var app = express()
   var bodyParser = require('body-parser');
@@ -33,6 +34,18 @@ var app = express()
     .catch(error => {console.log(error)})
   })
 
+  router.get("/estacion/:idEstacion/info", function(req, res, next) {
+    let idEstacion = req.params.idEstacion;
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerBicicletas(con, idEstacion)
+    })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
   router.delete("/:id", function(req, res, next) {
     let idBicicleta = req.params.id
     bbdd.getConnection()
@@ -41,6 +54,19 @@ var app = express()
     })
     .then(result => {
         res.send("Bicicleta eliminada")
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.put("/:id/reservar", function(req, res, next) {
+    let idBicicleta = req.params.id
+    bbdd.getConnection()
+    .then(con => {
+        bbddReservas.reservarBicicleta(con, 0, id)
+        return bbdd.reservarBicicleta(con, idBicicleta)
+    })
+    .then(result => {
+        res.send("Bicicleta reservada")
     })
     .catch(error => {console.log(error)})
   })

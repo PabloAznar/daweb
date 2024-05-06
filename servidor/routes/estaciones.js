@@ -65,4 +65,15 @@ var app = express()
     .catch(error => {console.log(error)})
   })
 
+  router.get("/info", function(req, res, next){ 
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerEstaciones(con)
+    })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
   module.exports = router;
