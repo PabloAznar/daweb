@@ -11,6 +11,11 @@ async function getConnection() {
     return connection
 }
 
+async function obtenerReservas(connection, usuario) {
+    let result = connection.execute("SELECT * FROM RESERVA")
+    return result;
+}
+
 async function reservarBicicleta(connection, usuario, bicicleta) {
     const fechaInicio = new Date();
     const fechaFin = new Date(fechaInicio.getTime() + 30 * 1000);
@@ -22,5 +27,12 @@ async function reservarBicicleta(connection, usuario, bicicleta) {
     return result
 }
 
+async function formalizarReserva(connection, idReserva) {
+    return await connection.execute("UPDATE RESERVA SET FORMALIZADA = ? WHERE id = ?",
+    [true, idReserva])
+}
+
 exports.getConnection = getConnection
 exports.reservarBicicleta = reservarBicicleta
+exports.obtenerReservas = obtenerReservas
+exports.formalizarReserva = formalizarReserva

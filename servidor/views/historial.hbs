@@ -1,0 +1,48 @@
+<div>
+    <button id="reserva-btn">Reservas</button>
+    <button id="alquiler-btn">Alquileres</button>
+</div>
+<div id="panelReservas">
+    <h1>Reservas</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Bicicleta</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Formalizada</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each reserva}}
+            <tr>
+                <td id="bicicleta">{{bicicleta}}</td>
+                <td id="fecha">{{fecha}}</td>
+                <td id="formalizada">{{formalizada}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+<div id="panelAlquileres">
+    <h1>Alquileres</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Alquiler</th>
+                <th scope="col">Fecha</th>
+                <th scope="col">Duracion</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each alquiler}}
+            <tr>
+                <td id="bicicleta">{{bicicleta}}</td>
+                <td id="fecha">{{fecha}}</td>
+                <td id="duracion">{{duracion}}</td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+</div>
+
+<script src="javascripts/tablaHistorial.js"></script>
