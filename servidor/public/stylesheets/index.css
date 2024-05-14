@@ -6,34 +6,6 @@ div {
     grid-gap: 10px; /* Espacio entre las celdas */
 }
 
-/* Estilos para la cabecera */
-header {
-    grid-column: 1 / span 3; /* Ocupa tres columnas */
-    text-align: center;
-    background-color: #025587;
-    color: #FFFFFF;
-    grid-row: 1; /* Ocupa la primera fila */
-}
-
-/* Estilos para la barra de navegación */
-nav {
-    grid-column: 1 / span 3; /* Ocupa tres columnas */
-    background-color: #29415D;
-    justify-content: space-around;
-    align-items: center;
-    grid-row: 2; /* Ocupa la segunda fila */
-}
-
-nav a {
-    text-decoration: none;
-    color: #FFFFFF;
-    padding: 10px;
-}
-
-nav a:hover {
-    background-color: #1C2C3E;
-}
-
 /* Estilos para el article */
 article {
     grid-column: 1 / span 2; /* Ocupa dos columnas */

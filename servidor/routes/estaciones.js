@@ -65,4 +65,43 @@ var app = express()
     .catch(error => {console.log(error)})
   })
 
+  router.get("/:id", function(req, res, next) {
+    let idEstacion = req.params.id
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerEstacionPorId(con, idEstacion)
+    })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.put("/:id", function(req, res, next) {
+    let id = req.params.id
+    let nombre = req.body.nombre
+    let capacidad = req.body.capacidad
+    let codigoPostal = req.body.codigo_postal
+
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.modificarEstacion(con, nombre, capacidad, codigoPostal, id)
+    })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.get("/all/info", function(req, res, next){ 
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerEstaciones(con)
+    })
+    .then(data => {
+        res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
   module.exports = router;

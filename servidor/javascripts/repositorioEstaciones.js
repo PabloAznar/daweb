@@ -20,9 +20,9 @@ async function getConnection() {
         return result
     }
 
-    async function modificarEstacion(connection, id, nombre, capacidad, numeroBicicletas, codigo_postal, fechaAlta) {
-        let result = connection.execute("INSERT INTO ESTACION_APARCAMIENTO SET id = ?, nombre = ?, capacidad = ?, numero_bicicletas = ?, codigo_postal = ?, fecha_alta = ?",
-  [id, nombre, capacidad, numeroBicicletas, codigo_postal, fechaAlta]);
+    async function modificarEstacion(connection, nombre, capacidad, codigoPostal, id) {
+        let result = connection.execute("UPDATE ESTACION_APARCAMIENTO SET nombre = ?, capacidad = ?, codigo_postal = ? WHERE id = ? ",
+  [nombre, capacidad, numeroBicicletas, codigoPostal, id]);
         return result;
     }
 
@@ -37,8 +37,14 @@ async function getConnection() {
         return resultados[0]
     }
 
+    async function obtenerEstacionPorId(connection, id) {
+        const resultados = await connection.execute("SELECT * FROM ESTACION_APARCAMIENTO WHERE ID = ?", [id])
+        return resultados[0]
+    }
+
 exports.getConnection = getConnection
 exports.registrarEstacion = registrarEstacion
 exports.modificarEstacion = modificarEstacion
 exports.eliminarEstacion = eliminarEstacion
 exports.obtenerEstaciones = obtenerEstaciones
+exports.obtenerEstacionPorId = obtenerEstacionPorId
