@@ -26,7 +26,7 @@ var app = express()
     let idEstacion = req.params.idEstacion;
     bbdd.getConnection()
     .then(con => {
-        return bbdd.obtenerBicicletas(con, idEstacion)
+        return bbdd.obtenerBicicletasByEstacion(con, idEstacion)
     })
     .then(data => {
         res.render('bicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
@@ -38,7 +38,7 @@ var app = express()
     let idEstacion = req.params.idEstacion;
     bbdd.getConnection()
     .then(con => {
-        return bbdd.obtenerBicicletas(con, idEstacion)
+        return bbdd.obtenerBicicletasByEstacion(con, idEstacion)
     })
     .then(data => {
         res.send(data)
@@ -67,6 +67,18 @@ var app = express()
     })
     .then(result => {
         res.send("Bicicleta reservada")
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.get("/disponibles", function(req, res, next) {
+    let idEstacion = req.params.idEstacion;
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.obtenerBicicletasDisponibles(con)
+    })
+    .then(data => {
+        res.render('reservaBicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
     })
     .catch(error => {console.log(error)})
   })

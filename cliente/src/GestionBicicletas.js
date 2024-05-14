@@ -7,7 +7,7 @@ function GestionBicicletas() {
   const [estacionesCopia, setEstacionesCopia] = useState([])
 
   useEffect(() => {
-    fetch('/estaciones/info')
+    fetch('/estaciones/all/info')
       .then((response) => {
         return response.json()
       })
@@ -92,7 +92,9 @@ function GestionBicicletas() {
                   <td className="border">{estacion.capacidad}</td>
                   <td className="border">{estacion.numero_bicicletas}</td>
                   <td className="border">
-                    <button>Ver bicicletas</button>
+                    <a href={`/estaciones/${estacion.id}/bicicletas`}>
+                      <button>Ver bicicletas</button>
+                    </a>
                   </td>
                 </tr>
               ))}

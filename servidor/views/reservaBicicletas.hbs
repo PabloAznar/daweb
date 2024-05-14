@@ -17,7 +17,6 @@
                 <th scope="col">Nombre</th>
                 <th scope="col">Estacion</th>
                 <th scope="col">Fecha alta</th>
-                <th scope="col">Reservada</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -26,11 +25,10 @@
             <tr>
                 <td id="nombre">{{nombre}}</td>
                 <td id="estacion">{{estacion}}</td>
-                <td id="fecha_alta">{{fecha_alta}}</td>
                 <td id="reservada">{{reservada}}</td>
                 <td>
                     <div class="btn-group-vertical">
-                        <button class="btn btn-danger eliminar-btn" data-id="{{id}}">Dar de baja</button>
+                        <button class="btn btn-primary eliminar-btn" data-id="{{id}}">Reservar</button>
                     </div>
                 </td>
             </tr>

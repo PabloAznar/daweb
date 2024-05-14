@@ -18,7 +18,7 @@ var bbdd = require('../javascripts/respositorioUsuarios');
         return bbdd.registrarUsuario(con, nombre, apellidos, correo, clave, fechaNacimiento)
     })
     .then(result => {
-        res.send("Usuario registrado")
+        res.send(result)
     })
     .catch(error => {console.log(error)});
   });

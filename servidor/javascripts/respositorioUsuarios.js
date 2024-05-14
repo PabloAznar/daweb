@@ -20,7 +20,16 @@ async function getConnection() {
         return result
     }
 
+    async function obtenerUsuario(connection, id) {
+        return await connection.execute("SELECT * FROM USUARIO WHERE ID = ?", [id])
+    }
 
+    async function obtenerUsuarioPorCorreoClave(connection, correo, clave) {
+        let result = await connection.execute("SELECT * FROM USUARIO WHERE CORREO = ? AND CLAVE = ?", [correo, clave]);
+        return result[0]
+    }
 
 exports.getConnection = getConnection
 exports.registrarUsuario = registrarUsuario
+exports.obtenerUsuario = obtenerUsuario
+exports.obtenerUsuarioPorCorreoClave = obtenerUsuarioPorCorreoClave

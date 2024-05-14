@@ -19,8 +19,8 @@ async function getConnection() {
         return result
     }
 
-    async function obtenerBicicletas(connection, idEstacion) {
-        let result = await connection.execute("SELECT * FROM BICICLETA ")
+    async function obtenerBicicletasByEstacion(connection, idEstacion) {
+        let result = await connection.execute("SELECT * FROM BICICLETA WHERE estacion = ?", [idEstacion])
         return result[0]
     }
 
@@ -34,8 +34,14 @@ async function getConnection() {
         return result;
     }
 
+    async function obtenerBicicletasDisponibles(connection) {
+        let result = await connection.execute("SELECT * FROM BICICLETA WHERE reservada = false")
+        return result[0]
+    }
+
 exports.getConnection = getConnection
 exports.registrarBicicleta = registrarBicicleta
-exports.obtenerBicicletas = obtenerBicicletas
+exports.obtenerBicicletasByEstacion = obtenerBicicletasByEstacion
 exports.eliminarBicicletas = eliminarBicicletas
 exports.reservarBicicleta = reservarBicicleta
+exports.obtenerBicicletasDisponibles = obtenerBicicletasDisponibles
