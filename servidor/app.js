@@ -9,6 +9,7 @@ var usersRouter = require('./routes/users');
 var registerRouter = require('./routes/register');
 var estacionesRouter = require('./routes/estaciones');
 var bicicletasRouter = require('./routes/bicicletas');
+var loginRouter = require('./routes/login');
 
 
 var app = express();
@@ -28,6 +29,7 @@ app.use('/users', usersRouter);
 app.use('/register', registerRouter);
 app.use('/estaciones', estacionesRouter);
 app.use('/bicicletas', bicicletasRouter);
+app.use('/login', loginRouter);
 
 
 // catch 404 and forward to error handler
