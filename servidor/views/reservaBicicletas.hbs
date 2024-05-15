@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>CityBike</title>
+</head>
+
+<body>
+    <div id="header-container"></div>
+<div class="container features">
+    <h1>{{tittle}}</h1>
+    <table class="table table-bordered table-striped">
+        <thead class="thead-light">
+            <tr>
+                <th scope="col">Nombre</th>
+                <th scope="col">Estacion</th>
+                <th scope="col">Fecha alta</th>
+                <th scope="col">Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {{#each bicicleta}}
+            <tr>
+                <td id="nombre">{{nombre}}</td>
+                <td id="estacion">{{estacion}}</td>
+                <td id="reservada">{{reservada}}</td>
+                <td>
+                    <div class="btn-group-vertical">
+                        <button class="btn btn-primary eliminar-btn" data-id="{{id}}">Reservar</button>
+                    </div>
+                </td>
+            </tr>
+            {{/each}}
+        </tbody>
+    </table>
+    <script src="../../javascripts/eliminarBicicleta.js"></script>
+    <script src="../../javascripts/header.js"></script>
+</body>
+</html>

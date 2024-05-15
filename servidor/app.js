@@ -11,6 +11,8 @@ var estacionesRouter = require('./routes/estaciones');
 var bicicletasRouter = require('./routes/bicicletas');
 var loginRouter = require('./routes/login');
 
+var historialRouter = require('./routes/historial');
+var reservasRouter = require('./routes/reservas')
 
 var app = express();
 
@@ -31,6 +33,8 @@ app.use('/estaciones', estacionesRouter);
 app.use('/bicicletas', bicicletasRouter);
 app.use('/login', loginRouter);
 
+app.use('/historial', historialRouter);
+app.use('/reservas', reservasRouter)
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

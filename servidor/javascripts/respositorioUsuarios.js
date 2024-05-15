@@ -14,7 +14,8 @@ async function getConnection() {
 }
 
     async function registrarUsuario(connection, nombre, apellidos, correo, clave, fechaNacimiento) {
-        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?,  fecha_nacimiento = ?",
+        //let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?,  fecha_nacimiento = ?",
+        let result = connection.execute("INSERT INTO USUARIO SET nombre = ?, apellidos = ?, correo = ?, clave = ?, rol = ?, fecha_nacimiento = ?",
   [nombre, apellidos, correo, clave, rol, fechaNacimiento]);
 
         return result
@@ -34,8 +35,17 @@ async function getConnection() {
         }
     }
 
+    async function obtenerUsuario(connection, id) {
+        return await connection.execute("SELECT * FROM USUARIO WHERE ID = ?", [id])
+    }
 
+    async function obtenerUsuarioPorCorreoClave(connection, correo, clave) {
+        let result = await connection.execute("SELECT * FROM USUARIO WHERE CORREO = ? AND CLAVE = ?", [correo, clave]);
+        return result[0]
+    }
 
 exports.getConnection = getConnection
 exports.registrarUsuario = registrarUsuario
 exports.verificarCredenciales = verificarCredenciales
+exports.obtenerUsuario = obtenerUsuario
+exports.obtenerUsuarioPorCorreoClave = obtenerUsuarioPorCorreoClave
