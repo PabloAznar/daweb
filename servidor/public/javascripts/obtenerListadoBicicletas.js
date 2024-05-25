@@ -51,7 +51,7 @@ function agregarDatosTabla(data) {
             row.appendChild(columnaReservas);
 
             const columnaReservada = document.createElement('td');
-            columnaReservada.textContent = bicicleta.reservada;
+            columnaReservada.textContent = bicicleta.reservada === 0 ? 'No' : 'Sí';
             row.appendChild(columnaReservada);
 
             const columnaCreacion = document.createElement('td');
@@ -117,7 +117,7 @@ function agregarDatosTabla(data) {
         headerRow.appendChild(columnaReservas)
 
         const columnaReservada = document.createElement('th')
-        columnaReservada.textContent = "Número reservas"
+        columnaReservada.textContent = "Reservada"
         headerRow.appendChild(columnaReservada)
 
         const columnaCreacion = document.createElement('th')

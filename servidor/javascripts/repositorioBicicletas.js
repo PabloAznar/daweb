@@ -67,6 +67,10 @@ async function getConnection() {
     [idEstacion, nombreEstacion, idBicicleta])
     }
 
+    async function eliminarBicicletasPorEstacion(connection, idEstacion) {
+        return await connection.execute("DELETE FROM BICICLETA WHERE id_estacion = ?", idEstacion)
+    }
+
 exports.getConnection = getConnection
 exports.registrarBicicleta = registrarBicicleta
 exports.obtenerBicicletasByEstacion = obtenerBicicletasByEstacion
@@ -79,3 +83,4 @@ exports.establecerDisponible = establecerDisponible
 exports.obtenerEstacionPorBicicleta = obtenerEstacionPorBicicleta
 exports.alquilar = alquilar
 exports.aparcarBicicleta = aparcarBicicleta
+exports.eliminarBicicletasPorEstacion = eliminarBicicletasPorEstacion

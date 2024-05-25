@@ -1,7 +1,20 @@
-async function eliminarEstacion(id) {
+async function cancelarReservas(url, method) {
     return new Promise((resolve, reject) => {
         var request = new XMLHttpRequest();
-        request.open('DELETE', `http://localhost:3030/estaciones/${id}`, true)
+
+        request.onload = () => {
+            if(request.status === 200) {
+                resolve(request.response)
+            } else {
+                reject(request.response)
+            }
+        }
+
+        request.onerror = () => {
+            reject(request.response)
+        }
+
+        request.open(method, url, true)
         request.send(null)
     })
 }
@@ -9,8 +22,11 @@ async function eliminarEstacion(id) {
 const deleteButtons = document.querySelectorAll('.eliminar-btn');
 
 deleteButtons.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', async () => {
         const estacionId = button.getAttribute('data-id');
+        
+    await cancelarReservas(`http://localhost:3030/reservas/estacion/${estacionId}`, 'PATCH') 
+    await cancelarReservas(`http://localhost:3030/bicicletas/estacion/${estacionId}`, 'DELETE') 
 
         fetch(`http://localhost:3030/bicicletas/estacion/${estacionId}`, {
             method: 'DELETE'

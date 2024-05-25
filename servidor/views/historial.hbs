@@ -28,7 +28,13 @@
                 <tr>
                     <td id="bicicleta">{{nombre_bicicleta}}</td>
                     <td id="fecha">{{fecha_inicio}}</td>
-                    <td id="formalizada">{{formalizada}}</td>
+                    <td id="formalizada">
+                        {{#if formalizada}}
+                        Sí
+                        {{else}}
+                        No
+                        {{/if}}
+                    </td>
                 </tr>
                 {{/each}}
             </tbody>

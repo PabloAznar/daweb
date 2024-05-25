@@ -56,10 +56,7 @@ function Header() {
                                         <a className="nav-link" href="http://localhost:3030/estaciones">Gestionar estaciones</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="http://localhost:3030">Alta estación</a>
-                                    </li>
-                                    <li className="nav-item">
-                                        <a className="nav-link" href="http://localhost:3030/altaEstacion.html">Gestionar estaciones</a>
+                                        <a className="nav-link" href="http://localhost:3030/altaEstacion.html">Alta estacion</a>
                                     </li>
                                 </ul>
                                 <a href="http://localhost:3030">

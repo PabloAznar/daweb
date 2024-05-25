@@ -16,27 +16,31 @@ router.post('/', function (req, res, next) {
       return bbdd.registrarEstacion(con, nombre, capacidad, codigoPostal)
     })
     .then(result => {
-      res.send("Estacion dada de alta")
+      res.send(result)
     })
-    .catch(error => { console.log(error) });
+    .catch(error => { 
+      console.log(error) 
+      res.status(500).send(error.message)
+    });
 });
 
 router.put('/', function (req, res, next) {
   let id = req.body.id
   let nombre = req.body.nombre
   let capacidad = req.body.capacidad
-  let numeroBicicletas = req.body.numeroBicicletas
-  let codigoPostal = req.body.codigoPostal
-  let fechaAlta = req.body.fechaAlta
+  let codigoPostal = req.body.codigo_postal
 
   bbdd.getConnection()
     .then(con => {
-      return bbdd.modificarEstacion(con, id, nombre, capacidad, numeroBicicletas, codigoPostal, fechaAlta)
+      return bbdd.modificarEstacion(con, id, nombre, capacidad, codigoPostal)
     })
     .then(result => {
       res.send("Estacion modificada")
     })
-    .catch(error => { console.log(error) })
+    .catch(error => { 
+      res.status(500).send(error.message)
+      console.log(error) 
+    })
 });
 
 router.put('/:id', function (req, res, next) {

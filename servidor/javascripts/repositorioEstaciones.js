@@ -20,7 +20,7 @@ async function getConnection() {
         return result
     }
 
-    async function modificarEstacion(connection, nombre, capacidad, codigoPostal, id) {
+    async function modificarEstacion(connection, id, nombre, capacidad, codigoPostal) {
         let result = connection.execute("UPDATE ESTACION_APARCAMIENTO SET nombre = ?, capacidad = ?, codigo_postal = ? WHERE id_estacion = ? ",
   [nombre, capacidad, codigoPostal, id]);
         return result;

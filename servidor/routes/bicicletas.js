@@ -19,7 +19,10 @@ var app = express()
     .then(result => {
         res.send("Bicicleta dada de alta")
     })
-    .catch(error => {console.log(error)});
+    .catch(error => {
+      console.log(error)
+      res.status(500).send(error.message)
+    });
   });
 
   router.get("/estacion/:idEstacion", function(req, res, next) {
@@ -114,16 +117,32 @@ var app = express()
   router.put("/:idBicicleta/estacion/:idEstacion/aparcar", function (req, res, next) {
     let idEstacion = req.params.idEstacion
     let idBicicleta = req.params.idBicicleta
-  
+    let nombreEstacion = req.body.estacion
   
     bbdd.getConnection()
       .then(con => {
-        return bbdd.aparcarBicicleta(con, idEstacion, idBicicleta)
+        return bbdd.aparcarBicicleta(con, idEstacion, idBicicleta, nombreEstacion)
       })
       .then(data => {
         res.send(data)
       })
       .catch(error => { console.log(error) })
+  })
+
+  router.delete("estacion/:id", function(req, res, next) {
+    let idEstacion = req.params.id
+
+    bbdd.getConnection()
+    .then(con => {
+      return bbdd.eliminarBicicletasPorEstacion(con, idEstacion)
+    })
+    .then(result => {
+      return res.send(result)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).send(error.message)
+    })
   })
 
   module.exports = router;

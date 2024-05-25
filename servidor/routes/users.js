@@ -47,4 +47,31 @@ router.post('/', function(req, res, next) {
   })
 
 
+  router.get('/:id/obtener-reserva-alquiler', function(req, res, next) {
+    let idUsuario = req.params.id
+
+    bbdd.getConnection()
+    .then(async (con) => {
+      let result = []
+      let reserva = await bbdd.obtenerReservaActiva(con, idUsuario)
+      let alquiler = await bbdd.obtenerAlquilerActivo(con, idUsuario)
+      if(reserva.length === 0) {
+        reserva = [{'id_reserva': null}]
+      }
+      result = result.concat(reserva)
+      if(alquiler.length === 0) {
+        alquiler = [{'id_alquiler': null}]
+      }
+      result = result.concat(alquiler)
+      return result
+    })
+    .then(result => {
+      res.send(result)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).send(error.message)
+    })
+  })
+
 module.exports = router;

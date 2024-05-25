@@ -49,4 +49,19 @@ var bbdd = require('../javascripts/repositorioReservas');
     .catch(error => {console.log(error)})
   })
 
+  router.patch('/estacion/:id', function(req, res, next) {
+    let idEstacion = req.params.id
+    bbdd.getConnection()
+    .then(con => {
+      return bbdd.cancelarReservasEstacion(con, idEstacion)
+    })
+    .then(response => {
+      res.send(response)
+    })
+    .catch(error => {
+      res.status(500).send(error.message)
+      console.log(error)
+    })
+  })
+
   module.exports = router;

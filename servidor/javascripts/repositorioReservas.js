@@ -45,6 +45,10 @@ async function obtenerHistorial(connection, idUsuario) {
 return result[0];
 }
 
+async function cancelarReservasEstacion(connection, idEstacion) {
+    return await connection.execute("UPDATE RESERVA SET formalizada = ?, valida = ? WHERE id_estacion = ?", [false, false, idEstacion])
+}
+
 exports.getConnection = getConnection
 exports.reservarBicicleta = reservarBicicleta
 exports.obtenerReservas = obtenerReservas
@@ -52,3 +56,4 @@ exports.formalizarReserva = formalizarReserva
 exports.obtenerReservaActiva = obtenerReservaActiva
 exports.establecerNoValida = establecerNoValida
 exports.obtenerHistorial = obtenerHistorial
+exports.cancelarReservasEstacion = cancelarReservasEstacion

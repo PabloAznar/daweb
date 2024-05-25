@@ -64,7 +64,7 @@ btnFinalizar.forEach(button => {
             })
             .catch((error) => console.log(error))
     })
-})
+}) 
 
 async function aparcarBicicleta(idEstacion, idBicicleta, estacion) {
     await fetch(`http://localhost:3030/bicicletas/${idBicicleta}/estacion/${idEstacion}/aparcar`, {
