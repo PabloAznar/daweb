@@ -7,6 +7,8 @@ import './App.css';
 import { BrowserRouter, Route, Switch } from "react-router-dom";
 import ReservaBicicletas from "./ReservaBicicletas";
 import ModificarEstacion from "./ModificarEstacion";
+import SetUsuario from "./SetUsuario";
+import DropUsuario from "./DropUsuario";
 
 function App() {
   return (
@@ -15,6 +17,8 @@ function App() {
       <main>
         <BrowserRouter>
           <Switch>
+            <Route path="/usuario/:idUsuario" component={SetUsuario}/>
+            <Route path="'/logout" component={DropUsuario}/>
             <Route path="/registrar" component={RegistrarUsuario}/>
             <Route path="/citybike" component={GestionBicicletas}/>
             <Route path="/estaciones/:idEstacion/bicicletas" component={ReservaBicicletas}/>
@@ -22,7 +26,7 @@ function App() {
           </Switch>
         </BrowserRouter>
       </main>
-      <Footer />
+      <Footer/>
     </div>
   );
 }

@@ -12,7 +12,7 @@
 
     <div class="container features">
         <h1>{{tittle}}</h1>
-        <div id="panel"></div>
+        <div id="panel-bicicletas"></div>
         <table class="table table-bordered table-striped">
             <thead class="thead-light">
                 <tr>
@@ -34,9 +34,10 @@
                     <td id="fecha_alta">{{fecha_alta}}</td>
                     <td>
                         <div class="btn-group-vertical">
-                            <button class="btn btn-danger eliminar-btn" data-id="{{id}}">Eliminar</button>
-                            <button class="btn btn-primary modificar-btn" data-id="{{id}}">Modificar estacion</button>
-                            <button class="btn btn-secondary listado-btn" data-id="{{id}}">Listado bicicletas</button>
+                            <button class="btn btn-danger eliminar-btn" data-id="{{id_estacion}}">Eliminar</button>
+                            <button class="btn btn-primary modificar-btn" data-id="{{id_estacion}}">Modificar estacion</button>
+                            <button class="btn btn-success aniadir-btn" data-id="{{id_estacion}}">Alta bicicleta</button>
+                            <button class="btn btn-secondary listado-btn" data-id="{{id_estacion}}">Listado bicicletas</button>
                         </div>
                     </td>
                 </tr>

@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import './bicicletas.css'
 
 function GestionBicicletas() {
-
   const [estaciones, setEstaciones] = useState([])
   const [estacionesCopia, setEstacionesCopia] = useState([])
 
@@ -86,13 +85,13 @@ function GestionBicicletas() {
             </thead>
             <tbody>
               {estacionesCopia.map((estacion) => (
-                <tr key={estacion.id}>
+                <tr key={estacion.id_estacion}>
                   <td className="border">{estacion.nombre}</td>
                   <td className="border">{estacion.codigo_postal}</td>
                   <td className="border">{estacion.capacidad}</td>
                   <td className="border">{estacion.numero_bicicletas}</td>
                   <td className="border">
-                    <a href={`/estaciones/${estacion.id}/bicicletas`}>
+                    <a href={`/estaciones/${estacion.id_estacion}/bicicletas`}>
                       <button>Ver bicicletas</button>
                     </a>
                   </td>

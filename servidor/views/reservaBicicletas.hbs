@@ -16,7 +16,8 @@
             <tr>
                 <th scope="col">Nombre</th>
                 <th scope="col">Estacion</th>
-                <th scope="col">Fecha alta</th>
+                <th scope="col">Reservada</th>
+                <th scope="col">Fecha creacion</th>
                 <th scope="col">Acciones</th>
             </tr>
         </thead>
@@ -24,18 +25,21 @@
             {{#each bicicleta}}
             <tr>
                 <td id="nombre">{{nombre}}</td>
-                <td id="estacion">{{estacion}}</td>
+                <td id="estacion">{{nombre_estacion}}</td>
                 <td id="reservada">{{reservada}}</td>
+                <td id="fecha-creacion">{{fecha_creacion}}</td>
+
                 <td>
                     <div class="btn-group-vertical">
-                        <button class="btn btn-primary eliminar-btn" data-id="{{id}}">Reservar</button>
+                        <button class="btn btn-primary reservar-btn" data-id="{{id_bicicleta}}">Reservar</button>
                     </div>
                 </td>
             </tr>
+            <span id="id-estacion" style="display:none">{{id_estacion}}</span>
             {{/each}}
         </tbody>
     </table>
-    <script src="../../javascripts/eliminarBicicleta.js"></script>
+    <script src="../../javascripts/reservarBicicleta.js"></script>
     <script src="../../javascripts/header.js"></script>
 </body>
 </html>

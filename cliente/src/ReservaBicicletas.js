@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 
 function ReservaBicicletas(props) {
     const { idEstacion } = props.match.params;
+    const usuarioLoggeado = JSON.parse(localStorage.getItem('usuario'));
 
     const [bicicletas, setBicicletas] = useState([])
 
@@ -11,21 +12,46 @@ function ReservaBicicletas(props) {
             return response.json()
           })
           .then((data) => {
-            console.log(data)
             setBicicletas(data)
           })
       }, [])
     
     function reservarBicicleta(index) {
         let bicicleta = bicicletas[index];
-        if(!bicicleta.reservada) {
-            const requestMethod = {
-                method: 'PUT',
-            };
-            fetch(`/bicicletas/${bicicleta.id}/reservar`, requestMethod)
+            fetch('/reservas', {
+              method: 'POST',
+              headers: new Headers({
+                'Content-Type': 'application/json'
+              }),
+              body: JSON.stringify({
+                idUsuario: usuarioLoggeado.id_usuario,
+                usuario: usuarioLoggeado.nombre,
+                idBicicleta: bicicleta.id_bicicleta,
+                bicicleta: bicicleta.nombre,
+                idEstacion: bicicleta.id_estacion,
+                estacion: bicicleta.nombre_estacion
+              })
+            })
+              .then((response) => {
+                fetch(`/bicicletas/${bicicleta.id_bicicleta}/reservar`, {
+                  method: 'PUT',
+                  headers: new Headers({
+                    'Content-Type': 'application/json'
+                  }),
+                  body: JSON.stringify({
+                    usuario: usuarioLoggeado.nombre,
+                    bicicleta: bicicleta.nombre,
+                    estacion: bicicleta.id_estacion,
+                    nombre_estacion: bicicleta.nombre_estacion
+                  })
+                })
+                .then((response)=> {
+                  window.location.reload();
+                })
+                .catch((error) => console.log(error))
+              })
+              .catch((error) => console.log(error))
         }
-        
-    }
 
     return(
         <div className="row">
@@ -35,18 +61,18 @@ function ReservaBicicletas(props) {
               <tr>
                 <th className="bg-primary border">Bicicleta</th>
                 <th className="bg-primary border">Fecha alta</th>
-                <th className="bg-primary border">Ultima reserva</th>
-                <th className="bg-primary border">Numero reservas</th>
+                <th className="bg-primary border">Ultimo alquiler</th>
+                <th className="bg-primary border">Numero alquileres</th>
                 <th className="bg-primary border">Reservada</th>
                 <th className="bg-primary border">Acciones</th>
               </tr>
             </thead>
             <tbody>
               {bicicletas.map((bicicleta, index) => (
-                <tr key={bicicleta.id}>
+                <tr key={bicicleta.id_bicicleta}>
                   <td className="border">{bicicleta.nombre}</td>
-                  <td className="border">{bicicleta.fecha_alta}</td>
-                  <td className="border">{bicicleta.ultima_reserva}</td>
+                  <td className="border">{bicicleta.fecha_creacion}</td>
+                  <td className="border">{bicicleta.ultimo_alquiler}</td>
                   <td className="border">{bicicleta.numero_reservas}</td>
                   <td className="border">{bicicleta.reservada ? 'Sí' : 'No'}</td>
                   <td className="border">

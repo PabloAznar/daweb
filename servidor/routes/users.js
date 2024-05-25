@@ -34,9 +34,16 @@ router.post('/', function(req, res, next) {
     return bbdd.obtenerUsuarioPorCorreoClave(con, correo, clave)
   })
   .then(result => {
-    res.send(result)
+    if (result.length === 0) {
+      res.status(404).send("User not found")
+    } else {
+      res.send(result)
+    }
   })
-  .catch(error => {console.log(error)});
+  .catch(error => {
+    console.log(error)
+    res.status(500).send(error)
+  });
   })
 
 

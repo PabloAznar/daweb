@@ -21,11 +21,12 @@ async function getConnection() {
     }
 
     async function obtenerUsuario(connection, id) {
-        return await connection.execute("SELECT * FROM USUARIO WHERE ID = ?", [id])
+        const result = await connection.execute("SELECT * FROM USUARIO WHERE id_usuario = ?", [id])
+        return result[0]
     }
 
     async function obtenerUsuarioPorCorreoClave(connection, correo, clave) {
-        let result = await connection.execute("SELECT * FROM USUARIO WHERE CORREO = ? AND CLAVE = ?", [correo, clave]);
+        let result = await connection.execute("SELECT * FROM USUARIO WHERE correo = ? AND clave = ?", [correo, clave]);
         return result[0]
     }
 
