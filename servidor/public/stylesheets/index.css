@@ -1,34 +1,26 @@
-/* Estilos para el grid container */
-div {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr); /* Tress columnas */
-    grid-template-rows: auto auto 1fr auto; /* Cuatro filas: cabecera, barra de navegación, contenido, pie de página */
-    grid-gap: 10px; /* Espacio entre las celdas */
+article, aside {
+    margin-bottom: 20px;
 }
 
-/* Estilos para el article */
-article {
-    grid-column: 1 / span 2; /* Ocupa dos columnas */
-    grid-row: 3; /* Ocupa la tercera fila */
-}
-
-/* Estilos para el aside */
-aside {
-    grid-column: 3; /* Ocupa la tercera columna */
-    grid-row: 3; /* Ocupa la tercera fila */
-}
-
-/* Estilos para la tabla */
 table {
-    grid-column: 1 / span 3; /* Ocupa tres columnas */
-    grid-row: 4; /* Ocupa la cuarta fila */
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 20px;
+}
+table, th, td {
+    border: 1px solid #ddd;
+}
+th, td {
+    padding: 10px;
+    text-align: center;
+}
+th {
+    background-color: #f2f2f2;
 }
 
-/* Estilos para el pie de página */
-footer {
-    grid-column: 1 / span 3; /* Ocupa tres columnas */
-    background-color: #29415D;
-    color: #FFFFFF;
+tfoot td {
+    background-color: #f2f2f2;
+    font-weight: bold;
     text-align: center;
-    grid-row: 5; /* Ocupa la quinta fila */
+    padding: 10px;
 }

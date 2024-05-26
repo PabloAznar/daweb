@@ -3,8 +3,8 @@
 const altaBicicletas = document.querySelectorAll('.aniadir-btn');
 
 altaBicicletas.forEach(button => {
-    const numeroBicicletas = button.parentNode.parentNode.parentNode.querySelector('#numero_bicicletas').innerText;
-    const capacidad = button.parentNode.parentNode.parentNode.querySelector('#capacidad').innerText;
+    const numeroBicicletas = Number(button.parentNode.parentNode.parentNode.querySelector('#numero_bicicletas').innerText);
+    const capacidad = Number(button.parentNode.parentNode.parentNode.querySelector('#capacidad').innerText);
     if (capacidad <= numeroBicicletas) {
         button.disabled = true
     }
@@ -30,8 +30,8 @@ altaBicicletas.forEach(button => {
                 </div>
             </div>
             <div class="mb-3">
-                <button id="btnAltaBicicleta">Alta bicicleta</button>
-                <button id="btnCerrar">Cancelar</button>
+                <button class="btn btn-primary" id="btnAltaBicicleta">Alta bicicleta</button>
+                <button class="btn btn-primary" id="btnCerrar">Cancelar</button>
             <div>
             <div id="bicicleta-duplicada" class="form-group row mb-4" style="display: none;">
                 <div class="col-sm-9 mt-4">

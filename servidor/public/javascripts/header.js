@@ -16,10 +16,10 @@ if (usuario === null || usuario === undefined) {
             </ul>
             <div>
                 <a href="http://localhost:3000/registrar" style="margin-right: 1.5rem">
-                    <button>Registrate</button>
+                    <button class="btn btn-secondary">Registrate</button>
                 </a>
                 <a href="http://localhost:3030/login.html">
-                    <button>Iniciar sesion</button>
+                    <button class="btn btn-secondary">Iniciar sesion</button>
                 </a>
             </div>    
         </div>
@@ -40,8 +40,8 @@ if (usuario === null || usuario === undefined) {
                     <a class="nav-link"  href="http://localhost:3030/altaEstacion.html">Alta estacion</a>
                 </li>
             </ul>
-            <a href="http://localhost:3030">
-                <button id="btnCerrarSesion">Cerrar sesion</button>
+            <a href="http://localhost:3000/logout">
+                <button class="btn btn-secondary" id="btnCerrarSesion">Cerrar sesion</button>
             </a>
         </div>
     </div>
@@ -70,8 +70,8 @@ if (usuario === null || usuario === undefined) {
                     <a class="nav-link" href="http://localhost:3030/historial/${usuario.id_usuario}">Historial</a>
                 </li>
             </ul>
-            <a href="http://localhost:3030">
-                <button id="btnCerrarSesion">Cerrar sesion</button>
+            <a href="http://localhost:3000/logout">
+                <button class="btn btn-secondary" id="btnCerrarSesion">Cerrar sesion</button>
             </a>
         </div>
     </div>
@@ -91,12 +91,7 @@ headerItem.innerHTML = navItem;
 
 var btnCerrarSesion = document.getElementById("btnCerrarSesion")
 
-btnCerrarSesion.addEventListener('click', () => {
-    localStorage.clear();
-})
-
-
-if(usuario.rol === "USUARIO") {
+if (usuario.rol === "USUARIO"){
     let linkReserva = document.getElementById('link-reserva')
     linkReserva.addEventListener('click', () => {
         fetch(`/reservas/usuario/${usuario.id_usuario}/activa`)
@@ -138,7 +133,7 @@ function generarPopUp(textPopup) {
     var contenido = `
     <dialog id="modal" style="position: absolute;">
         <h3>${textPopup}</h3>
-        <div class="mb-3>
+        <div style="margin-top: 2rem;">
             <button class="btn btn-primary" id="btnCerrarPopUp" style="cursor: pointer;">Cerrar</button>
         <div>
     </dialog>

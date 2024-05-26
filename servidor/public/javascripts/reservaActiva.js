@@ -17,7 +17,7 @@ data.forEach((datosReserva, index) => {
     <td>${datosReserva.fecha_inicio}</td>
     <td>${datosReserva.fecha_fin}</td>
     <td>
-      <button onclick="alquilarBicicleta(${index})">Alquilar</button>
+      <button class="btn btn-primary" onclick="alquilarBicicleta(${index})">Alquilar</button>
     </td>
   `;
 
@@ -43,7 +43,7 @@ function alquilarBicicleta(index) {
     .then((response) => {
         crearAlquiler(data)
         .then((response) => {
-            window.location.href = "http://localhost:3030/alquilerActivo.html"
+            window.location.href = `http://localhost:3030/alquileres/usuario/${usuario.id_usuario}`
         })
         .catch((error) => console.log(error))
     })
@@ -94,24 +94,4 @@ async function crearAlquiler(bicicleta) {
         request.setRequestHeader('Content-Type', 'application/json');
         request.send(bicicleta);
     });
-}
- 
-async function makeAjaxCall(url, methodType) {
-    var promiseObj = new Promise(function (resolve, reject) {
-        var xhr = new XMLHttpRequest();
-        xhr.open(methodType, url, true);
-        xhr.send();
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState === 4) {
-                if (xhr.status === 200) {
-                    var resp = xhr.responseText;
-                    var respJSON = JSON.parse(resp);
-                    resolve(respJSON);
-                } else {
-                    reject(xhr.status);
-                }
-            }
-        }
-    });
-    return promiseObj;
 }

@@ -11,45 +11,55 @@
     <div id="header-container"></div>
 
     <div class="container features">
-        <h1>{{tittle}}</h1>
-        <div id="panel-bicicletas"></div>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Nombre</th>
-                    <th scope="col">Capacidad</th>
-                    <th scope="col">Numero bicicletas</th>
-                    <th scope="col">Codigo postal</th>
-                    <th scope="col">Fecha alta</th>
-                    <th scope="col">Acciones</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each estacion}}
-                <tr>
-                    <td id="nombre">{{nombre}}</td>
-                    <td id="capacidad">{{capacidad}}</td>
-                    <td id="numero_bicicletas">{{numero_bicicletas}}</td>
-                    <td id="codigo_postal">{{codigo_postal}}</td>
-                    <td id="fecha_alta">{{fecha_alta}}</td>
-                    <td>
-                        <div class="btn-group-vertical">
-                            <button class="btn btn-danger eliminar-btn" data-id="{{id_estacion}}">Eliminar</button>
-                            <button class="btn btn-primary modificar-btn" data-id="{{id_estacion}}">Modificar estacion</button>
-                            <button class="btn btn-success aniadir-btn" data-id="{{id_estacion}}">Alta bicicleta</button>
-                            <button class="btn btn-secondary listado-btn" data-id="{{id_estacion}}">Listado bicicletas</button>
-                        </div>
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-
+        <div className="row justify-content-center">
+            <div className="col-md-5">
+                <h1 style="margin-top: 2rem;">{{tittle}}</h1>
+                <div id="panel-bicicletas"></div>
+                <table class="table table-bordered table-striped" style="margin-top: 2rem;">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Capacidad</th>
+                            <th scope="col">Numero bicicletas</th>
+                            <th scope="col">Codigo postal</th>
+                            <th scope="col">Fecha alta</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each estacion}}
+                        <tr>
+                            <td id="nombre">{{nombre}}</td>
+                            <td id="capacidad">{{capacidad}}</td>
+                            <td id="numero_bicicletas">{{numero_bicicletas}}</td>
+                            <td id="codigo_postal">{{codigo_postal}}</td>
+                            <td id="fecha_alta">{{fecha_alta}}</td>
+                            <td>
+                                <div class="btn-group-vertical">
+                                    <button class="btn btn-danger eliminar-btn"
+                                        data-id="{{id_estacion}}">Eliminar</button>
+                                    <button class="btn btn-primary modificar-btn" data-id="{{id_estacion}}">Modificar
+                                        estacion</button>
+                                    <button class="btn btn-success aniadir-btn" data-id="{{id_estacion}}">Alta
+                                        bicicleta</button>
+                                    <button class="btn btn-secondary listado-btn" data-id="{{id_estacion}}">Listado
+                                        bicicletas</button>
+                                </div>
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
     </div>
+    <div id="footer-container"></div>
     <script src="javascripts/eliminarEstacion.js"></script>
     <script src="javascripts/altaBicicleta.js"></script>
     <script src="javascripts/listadoBicicletas.js"></script>
     <script src="javascripts/modificarEstacion.js"></script>
     <script src="javascripts/header.js"></script>
+    <script src="javascripts/footer.js"></script>
 </body>
+
 </html>

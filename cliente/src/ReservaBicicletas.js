@@ -60,7 +60,7 @@ function ReservaBicicletas(props) {
                 })
               })
                 .then((response) => {
-                  window.location.reload();
+                  window.location.href = "http://localhost:3030/reservaActiva.html";
                 })
                 .catch((error) => console.log(error))
             })
@@ -70,8 +70,10 @@ function ReservaBicicletas(props) {
   }
 
   return (
-    <div className="row">
-      <div className="col">
+    <div class="container-fluid form-margin">
+
+    <div className="row justify-content-center">
+      <div className="col-md-8">
         <table className="table table-bordered table-striped">
           <thead className="thead-dark">
             <tr>
@@ -92,7 +94,7 @@ function ReservaBicicletas(props) {
                 <td className="border">{bicicleta.numero_reservas}</td>
                 <td className="border">{bicicleta.reservada ? 'Sí' : 'No'}</td>
                 <td className="border">
-                  <button onClick={() => reservarBicicleta(index)} disabled={bicicleta.reservada}>Reservar</button>
+                  <button className="btn btn-primary" onClick={() => reservarBicicleta(index)} disabled={bicicleta.reservada}>Reservar</button>
                 </td>
               </tr>
             ))}
@@ -100,6 +102,7 @@ function ReservaBicicletas(props) {
         </table>
         <PopUp openModal={popUp} closeModal={() => setPopup(false)} texto={mensaje} />
       </div>
+    </div>
     </div>
   )
 }

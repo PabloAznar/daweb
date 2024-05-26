@@ -78,7 +78,7 @@ router.get("/", function (req, res, next) {
       return bbdd.obtenerEstaciones(con)
     })
     .then(data => {
-      res.render('estaciones', { 'tittle': 'estaciones', 'estacion': data })
+      res.render('estaciones', { 'tittle': 'Gestion de estaciones', 'estacion': data })
     })
     .catch(error => { console.log(error) })
 })
@@ -132,5 +132,18 @@ router.get("/plaza/aparcamiento/disponible", function(req, res, next) {
   })
   .catch((error) => console.log(error))
 }) 
+
+router.put("/:id/aparcar", function (req, res, next) {
+  let id = req.params.id
+
+  bbdd.getConnection()
+    .then(con => {
+      return bbdd.aparcarBicicleta(con, id)
+    })
+    .then(data => {
+      res.send(data)
+    })
+    .catch(error => { console.log(error) })
+})
 
 module.exports = router;

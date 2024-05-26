@@ -3,44 +3,54 @@
 
 <head>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="../../stylesheets/reservas.css" rel="stylesheet">
     <meta charset="UTF-8">
     <title>CityBike</title>
 </head>
 
 <body>
     <div id="header-container"></div>
-<div class="container features">
-    <h1>{{tittle}}</h1>
-    <div id="panel-activo"></div>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Estacion</th>
-                <th scope="col">Reservada</th>
-                <th scope="col">Fecha creacion</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each bicicleta}}
-            <tr>
-                <td id="nombre">{{nombre}}</td>
-                <td id="estacion">{{nombre_estacion}}</td>
-                <td id="reservada">{{reservada}}</td>
-                <td id="fecha-creacion">{{fecha_creacion}}</td>
+    <div class="container features">
+        <h1>{{tittle}}</h1>
+        <div id="panel-activo"></div>
+        <div className="row justify-content-center">
+            <div className="col-md-5">
+                <table class="table table-bordered table-striped">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th scope="col">Nombre</th>
+                            <th scope="col">Estacion</th>
+                            <th scope="col">Reservada</th>
+                            <th scope="col">Fecha creacion</th>
+                            <th scope="col">Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each bicicleta}}
+                        <tr>
+                            <td id="nombre">{{nombre}}</td>
+                            <td id="estacion">{{nombre_estacion}}</td>
+                            <td id="reservada">{{reservada}}</td>
+                            <td id="fecha-creacion">{{fecha_creacion}}</td>
 
-                <td>
-                    <div class="btn-group-vertical">
-                        <button class="btn btn-primary reservar-btn" data-id="{{id_bicicleta}}">Reservar</button>
-                    </div>
-                </td>
-            </tr>
-            <span id="id-estacion" style="display:none">{{id_estacion}}</span>
-            {{/each}}
-        </tbody>
-    </table>
+                            <td>
+                                <div class="btn-group-vertical">
+                                    <button class="btn btn-primary reservar-btn"
+                                        data-id="{{id_bicicleta}}">Reservar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <span id="id-estacion" style="display:none">{{id_estacion}}</span>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="footer-container"></div>
     <script src="../../javascripts/reservarBicicleta.js"></script>
     <script src="../../javascripts/header.js"></script>
+    <script src="../../javascripts/footer.js"></script>
 </body>
+
 </html>

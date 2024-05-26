@@ -9,35 +9,38 @@
 
 <body>
     <div id="header-container"></div>
-<div class="container features">
-    <h1>{{tittle}}</h1>
-    <table class="table table-bordered table-striped">
-        <thead class="thead-light">
-            <tr>
-                <th scope="col">Nombre</th>
-                <th scope="col">Estacion</th>
-                <th scope="col">Fecha alta</th>
-                <th scope="col">Reservada</th>
-                <th scope="col">Acciones</th>
-            </tr>
-        </thead>
-        <tbody>
-            {{#each bicicleta}}
-            <tr>
-                <td id="nombre">{{nombre}}</td>
-                <td id="estacion">{{estacion}}</td>
-                <td id="fecha_alta">{{fecha_alta}}</td>
-                <td id="reservada">{{reservada}}</td>
-                <td>
-                    <div class="btn-group-vertical">
-                        <button class="btn btn-danger eliminar-btn" data-id="{{id_bicicleta}}">Dar de baja</button>
-                    </div>
-                </td>
-            </tr>
-            {{/each}}
-        </tbody>
-    </table>
-    <script src="../../javascripts/eliminarBicicleta.js"></script>
-    <script src="../../javascripts/header.js"></script>
+    <div class="container features">
+        <h1>{{tittle}}</h1>
+        <table class="table table-bordered table-striped">
+            <thead class="thead-light">
+                <tr>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Estacion</th>
+                    <th scope="col">Fecha alta</th>
+                    <th scope="col">Reservada</th>
+                    <th scope="col">Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each bicicleta}}
+                <tr>
+                    <td id="nombre">{{nombre}}</td>
+                    <td id="estacion">{{estacion}}</td>
+                    <td id="fecha_alta">{{fecha_alta}}</td>
+                    <td id="reservada">{{reservada}}</td>
+                    <td>
+                        <div class="btn-group-vertical">
+                            <button class="btn btn-danger eliminar-btn" data-id="{{id_bicicleta}}">Dar de baja</button>
+                        </div>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+        <div id="footer-container"></div>
+        <script src="../../javascripts/eliminarBicicleta.js"></script>
+        <script src="../../javascripts/header.js"></script>
+        <script src="../../javascripts/footer.js"></script>
 </body>
+
 </html>

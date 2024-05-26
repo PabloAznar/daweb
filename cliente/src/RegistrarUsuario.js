@@ -42,7 +42,7 @@ function RegistrarUsuario() {
             clearErrors('clave');
         }
     }, [password, setError, clearErrors]);
-
+ 
     return (
         <div className="container-fluid form-margin">
             <div className="row justify-content-center">

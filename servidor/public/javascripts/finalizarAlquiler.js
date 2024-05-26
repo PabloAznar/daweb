@@ -20,8 +20,8 @@ btnFinalizar.forEach(button => {
                 </select>
             </div>
             <div class="mb-3">
-                <button id="btnFinalizarAlquiler" disabled>Finalizar alquiler</button>
-                <button id="btnCerrar">Cancelar</button>
+                <button class="btn btn-primary" id="btnFinalizarAlquiler" disabled>Finalizar alquiler</button>
+                <button class="btn btn-primary" id="btnCerrar">Cancelar</button>
             <div>
     </dialog>
 `;
@@ -75,6 +75,9 @@ async function aparcarBicicleta(idEstacion, idBicicleta, estacion) {
         body: JSON.stringify({
             estacion: estacion
         })
+    })
+    await fetch(`http://localhost:3030/estaciones/${idEstacion}/aparcar`, {
+        method: 'PUT'
     })
 }
 

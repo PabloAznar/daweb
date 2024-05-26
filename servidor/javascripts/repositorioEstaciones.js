@@ -55,6 +55,16 @@ async function getConnection() {
         return result[0]
     }
 
+    async function alquilar(connection, id) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = numero_bicicletas - 1 WHERE id_estacion = ?",
+        [id])
+    }
+
+    async function aparcarBicicleta(connection, id) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = numero_bicicletas + 1 WHERE id_estacion = ?",
+    [id])
+    }
+
 exports.getConnection = getConnection
 exports.registrarEstacion = registrarEstacion
 exports.modificarEstacion = modificarEstacion
@@ -64,3 +74,5 @@ exports.obtenerEstacionPorId = obtenerEstacionPorId
 exports.bajaBicicleta = bajaBicicleta
 exports.actualizarBicicletas = actualizarBicicletas
 exports.obtenerEstacionesDisponibles = obtenerEstacionesDisponibles
+exports.alquilar = alquilar
+exports.aparcarBicicleta = aparcarBicicleta

@@ -18,7 +18,7 @@ function App() {
         <BrowserRouter>
           <Switch>
             <Route path="/usuario/:idUsuario" component={SetUsuario}/>
-            <Route path="'/logout" component={DropUsuario}/>
+            <Route path="/logout" component={DropUsuario}/>
             <Route path="/registrar" component={RegistrarUsuario}/>
             <Route path="/citybike" component={GestionBicicletas}/>
             <Route path="/estaciones/:idEstacion/bicicletas" component={ReservaBicicletas}/>

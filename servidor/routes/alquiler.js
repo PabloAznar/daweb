@@ -2,7 +2,7 @@ var express = require('express');
 var router = express.Router();
 var bbdd = require('../javascripts/repositorioAlquileres');
 var bbddBicicletas = require('../javascripts/repositorioBicicletas');
-
+var bbddEstaciones = require('../javascripts/repositorioEstaciones')
   var app = express()
   var bodyParser = require('body-parser');
   app.use(bodyParser.urlencoded({ extended: false }));
@@ -29,6 +29,7 @@ var bbddBicicletas = require('../javascripts/repositorioBicicletas');
     bbdd.getConnection()
     .then((con) => {
       bbddBicicletas.alquilar(con, idBicicleta);
+      bbddEstaciones.alquilar(con, idEstacion)
       return bbdd.alquilarBicicleta(con, idUsuario, usuario, idBicicleta, bicicleta, idEstacion, estacion)
       })
       .then((response) => {

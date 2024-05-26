@@ -20,7 +20,7 @@ fetch(`http://localhost:3030/bicicletas/estacion/${id}`)
 .catch((error) => {
     console.log(error)
 })
-
+ 
 function agregarDatosTabla(data) {
     const filas = 5;
     let paginaActual = 1;
@@ -31,6 +31,9 @@ function agregarDatosTabla(data) {
         
         createTableHeader(tableBody)
         
+        body = document.createElement('tbody')
+        tableBody.appe
+
         const inicio = (pagina - 1) * filas;
         const fin = inicio + filas;
         const bicicletasPaginadas = data.slice(inicio, fin);
@@ -95,13 +98,16 @@ function agregarDatosTabla(data) {
             columnaAcciones.appendChild(btnGroup);
             row.appendChild(columnaAcciones);
 
-            tableBody.appendChild(row);
+            body.appendChild(row);
         });
-
+        tableBody.appendChild(body)
         document.getElementById('info-paginacion').textContent = `Bicicletas ${pagina} a ${fin} de ${data.length}`;
     }
 
     function createTableHeader(tableBody) {
+        const tableHeader = document.createElement('thead')
+        tableHeader.classList.add('bg-primary')
+
         const headerRow = document.createElement('tr')
 
         const columnaBicicleta = document.createElement('th')
@@ -126,9 +132,12 @@ function agregarDatosTabla(data) {
 
         const columnaAcciones = document.createElement('th')
         columnaAcciones.textContent = "Acciones"
+
         headerRow.appendChild(columnaAcciones)
 
-        tableBody.appendChild(headerRow);
+        tableHeader.appendChild(headerRow)
+
+        tableBody.appendChild(tableHeader);
     }
 
     async function eliminarBicicleta(id) {

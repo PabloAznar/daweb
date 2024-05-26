@@ -91,7 +91,7 @@ var app = express()
         return obtenerDisponibles(con)
     })
     .then(data => {
-        res.render('reservaBicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
+        res.render('reservaBicicletas', {'tittle' : 'Reservar bicicletas', 'bicicleta' : data} )
     })
     .catch(error => {console.log(error)})
   })

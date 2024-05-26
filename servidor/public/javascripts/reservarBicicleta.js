@@ -58,7 +58,7 @@ reserveButtons.forEach(button => {
                 method: 'PUT',
               })
               .then((response)=> {
-                window.location.reload();
+                window.location.href ="http://localhost:3030/reservaActiva.html";
               })
               .catch((error) => console.log(error))
             })
@@ -79,7 +79,7 @@ function mostrarPanel() {
     <dialog id="modal-reserva-alquiler">
       <h2>Ya tiene una reserva o alquiler activo</h2>
       <div class="mb-3">
-                <button id="btnCerrar-reserva-alquiler">Cerrar</button>
+                <button class="btn btn-primary" style="margin-top: 2rem" id="btnCerrar-reserva-alquiler">Cerrar</button>
             <div>  
     </dialog>
 `;

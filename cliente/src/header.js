@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PopUp from "./PopUp";
 
 function Header() {
@@ -41,6 +41,10 @@ function Header() {
             })
     }
 
+    function gotoHistorial() {
+        window.location.href = `http://localhost:3030/historial/${usuario.id_usuario}`
+    }
+
     return (
         <header>
             <nav className="navbar navbar-expand-lg navbar-dark bg-primary justify-content-center" style={{ display: 'grid' }}>
@@ -59,8 +63,8 @@ function Header() {
                                         <a className="nav-link" href="http://localhost:3030/altaEstacion.html">Alta estacion</a>
                                     </li>
                                 </ul>
-                                <a href="http://localhost:3030">
-                                    <button>Cerrar sesión</button>
+                                <a href="http://localhost:3000/logout">
+                                    <button className="btn btn-secondary">Cerrar sesión</button>
                                 </a>
                             </div>
                         ) : (
@@ -82,11 +86,11 @@ function Header() {
                                         <a className="nav-link" style={{ cursor: 'pointer' }} onClick={gotoAlquilerActivo}>Consultar alquiler activo</a>
                                     </li>
                                     <li className="nav-item">
-                                        <a className="nav-link" href="http://localhost:3030">Historial</a>
+                                        <a className="nav-link" onClick={gotoHistorial}>Historial</a>
                                     </li>
                                 </ul>
-                                <a href="http://localhost:3030">
-                                    <button>Cerrar sesión</button>
+                                <a href="http://localhost:3000/logout">
+                                    <button className="btn btn-secondary">Cerrar sesión</button>
                                 </a>
                                 <PopUp openModal={popUp} closeModal={() => setPopup(false)} texto={mensaje} />
                             </div>
@@ -101,10 +105,10 @@ function Header() {
                                 </ul>
                                 <div>
                                     <a href="http://localhost:3000/registrar" style={{marginRight: '1.5rem'}}>
-                                        <button>Registrate</button>
+                                        <button className="btn btn-secondary">Registrate</button>
                                     </a>
                                     <a href="http://localhost:3030/login.html">
-                                        <button>Iniciar sesion</button>
+                                        <button className="btn btn-secondary">Iniciar sesion</button>
                                     </a>
                                 </div>
                             </div>

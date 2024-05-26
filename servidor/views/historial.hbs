@@ -9,65 +9,75 @@
 
 <body>
     <div id="header-container"></div>
-    <div>
-        <button id="reserva-btn">Reservas</button>
-        <button id="alquiler-btn">Alquileres</button>
-    </div>
-    <div id="panelReservas" style="display: block">
-        <h1>Reservas</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Bicicleta</th>
-                    <th scope="col">Fecha</th>
-                    <th scope="col">Formalizada</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each reserva}}
-                <tr>
-                    <td id="bicicleta">{{nombre_bicicleta}}</td>
-                    <td id="fecha">{{fecha_inicio}}</td>
-                    <td id="formalizada">
-                        {{#if formalizada}}
-                        Sí
-                        {{else}}
-                        No
-                        {{/if}}
-                    </td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
-    <div id="panelAlquileres" style="display: none">
-        <h1>Alquileres</h1>
-        <table class="table table-bordered table-striped">
-            <thead class="thead-light">
-                <tr>
-                    <th scope="col">Bicicleta</th>
-                    <th scope="col">Inicio</th>
-                    <th scope="col">Fin</th>
-                    <th scope="col">Estacion origen</th>
-                    <th scope="col">Estacion destion</th>
-                </tr>
-            </thead>
-            <tbody>
-                {{#each alquiler}}
-                <tr>
-                    <td id="bicicleta">{{nombre_bicicleta}}</td>
-                    <td id="inicio">{{fecha_inicio}}</td>
-                    <td id="inicio">{{fecha_fin}}</td>
-                    <td id="origen">{{nombre_estacion_origen}}</td>
-                    <td id="origen">{{nombre_estacion_destino}}</td>
-                </tr>
-                {{/each}}
-            </tbody>
-        </table>
-    </div>
 
+    <div class="row justify-content-center">
+        <div class="col-md-9">
+            <div class="row" style="margin-top: 2rem;">
+                <div class="col" style="text-align: center;">
+                    <button class="btn btn-secondary" style="width: 100%;" id="reserva-btn">Reservas</button>
+                </div>
+                <div class="col" style="text-align: center;">
+                    <button class="btn btn-secondary" style="width: 100%" id="alquiler-btn">Alquileres</button>
+                </div>
+            </div>
+            <div id="panelReservas" style="display: block">
+                <h1 style="margin-top: 2rem;">Reservas</h1>
+                <table class="table table-bordered table-striped" style="margin-top: 2rem;">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th scope="col">Bicicleta</th>
+                            <th scope="col">Fecha</th>
+                            <th scope="col">Formalizada</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each reserva}}
+                        <tr>
+                            <td id="bicicleta">{{nombre_bicicleta}}</td>
+                            <td id="fecha">{{fecha_inicio}}</td>
+                            <td id="formalizada">
+                                {{#if formalizada}}
+                                Sí
+                                {{else}}
+                                No
+                                {{/if}}
+                            </td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+            <div id="panelAlquileres" style="display: none; margin-top: 2rem;">
+                <h1 style="margin-top: 2rem;">Alquileres</h1>
+                <table class="table table-bordered table-striped" style="margin-top: 2rem;">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th scope="col">Bicicleta</th>
+                            <th scope="col">Inicio</th>
+                            <th scope="col">Fin</th>
+                            <th scope="col">Estacion origen</th>
+                            <th scope="col">Estacion destion</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each alquiler}}
+                        <tr>
+                            <td id="bicicleta">{{nombre_bicicleta}}</td>
+                            <td id="inicio">{{fecha_inicio}}</td>
+                            <td id="inicio">{{fecha_fin}}</td>
+                            <td id="origen">{{nombre_estacion_origen}}</td>
+                            <td id="origen">{{nombre_estacion_destino}}</td>
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="footer-container"></div>
     <script src="../javascripts/tablaHistorial.js"></script>
     <script src="../javascripts/header.js"></script>
+    <script src="../javascripts/footer.js"></script>
 </body>
 
 </html>
