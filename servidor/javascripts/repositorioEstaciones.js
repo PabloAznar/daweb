@@ -20,16 +20,19 @@ async function getConnection() {
         return result
     }
 
-    async function modificarEstacion(connection, nombre, capacidad, codigoPostal, id) {
-        let result = connection.execute("UPDATE ESTACION_APARCAMIENTO SET nombre = ?, capacidad = ?, codigo_postal = ? WHERE id = ? ",
-  [nombre, capacidad, numeroBicicletas, codigoPostal, id]);
+    async function modificarEstacion(connection, id, nombre, capacidad, codigoPostal) {
+        let result = connection.execute("UPDATE ESTACION_APARCAMIENTO SET nombre = ?, capacidad = ?, codigo_postal = ? WHERE id_estacion = ? ",
+  [nombre, capacidad, codigoPostal, id]);
         return result;
     }
 
+    async function actualizarBicicletas(connection, id, numeroBicicletas) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = ? WHERE id_estacion = ?",
+    [numeroBicicletas, id])
+    }
+
     async function eliminarEstacion(connection, id) {
-        connection.execute("DELETE FROM BICICLETA WHERE ESTACION = ?", [id])
-        let result = connection.execute("DELETE FROM ESTACION_APARCAMIENTO WHERE id = ?", [id]);
-    return result;
+        return await connection.execute("DELETE FROM ESTACION_APARCAMIENTO WHERE id_estacion = ?", [id]);
     }
 
     async function obtenerEstaciones(connection) {
@@ -38,8 +41,28 @@ async function getConnection() {
     }
 
     async function obtenerEstacionPorId(connection, id) {
-        const resultados = await connection.execute("SELECT * FROM ESTACION_APARCAMIENTO WHERE ID = ?", [id])
+        const resultados = await connection.execute("SELECT * FROM ESTACION_APARCAMIENTO WHERE id_estacion = ?", [id])
         return resultados[0]
+    }
+
+    async function bajaBicicleta(connection, estacion) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = ? WHERE id_estacion = ?",
+    [estacion.id_estacion, estacion.numero_bicicletas - 1])
+    }
+
+    async function obtenerEstacionesDisponibles(connection) {
+        let result = await connection.execute("SELECT * FROM ESTACION_APARCAMIENTO WHERE numero_bicicletas < capacidad")
+        return result[0]
+    }
+
+    async function alquilar(connection, id) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = numero_bicicletas - 1 WHERE id_estacion = ?",
+        [id])
+    }
+
+    async function aparcarBicicleta(connection, id) {
+        return await connection.execute("UPDATE ESTACION_APARCAMIENTO SET numero_bicicletas = numero_bicicletas + 1 WHERE id_estacion = ?",
+    [id])
     }
 
 exports.getConnection = getConnection
@@ -48,3 +71,8 @@ exports.modificarEstacion = modificarEstacion
 exports.eliminarEstacion = eliminarEstacion
 exports.obtenerEstaciones = obtenerEstaciones
 exports.obtenerEstacionPorId = obtenerEstacionPorId
+exports.bajaBicicleta = bajaBicicleta
+exports.actualizarBicicletas = actualizarBicicletas
+exports.obtenerEstacionesDisponibles = obtenerEstacionesDisponibles
+exports.alquilar = alquilar
+exports.aparcarBicicleta = aparcarBicicleta

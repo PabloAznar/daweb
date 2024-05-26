@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <title>CityBike</title>
+</head>
+
+<body>
+    <div id="header-container"></div>
+    <div id="panel-fin"></div>
+    <div class="container-fluid form-margin">
+        <div class="row justify-content-center">
+            <div class="col-md-9">
+                <h1 style="margin-top: 2rem;">Consulta alquiler activo</h1>
+                <table class="table table-bordered table-striped" style="margin-top: 2rem;">
+                    <thead class="bg-primary">
+                        <tr>
+                            <th>Bicicleta</th>
+                            <th>Estacion</th>
+                            <th>Inicio</th>
+                            <th>Acciones</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {{#each alquiler}}
+                        <tr>
+                            <td id="nombre-bicicleta">{{nombre_bicicleta}}</td>
+                            <td id="estacion">{{nombre_estacion_origen}}</td>
+                            <td id="fecha-inicio">{{fecha_inicio}}</td>
+                            <td>
+                                <div class="btn-group-vertical">
+                                    <button class="btn btn-primary finalizar-btn" data-id="{{id}}">Finalizar</button>
+                                </div>
+                            </td>
+                        </tr>
+                        <span id="id-bicicleta" style="display:none">{{id_bicicleta}}</span>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div id="footer-container"></div>
+</body>
+<script src="../../javascripts/header.js"></script>
+<script src="../../javascripts/finalizarAlquiler.js"></script>
+<script src="../../javascripts/footer.js"></script>
+
+</html>

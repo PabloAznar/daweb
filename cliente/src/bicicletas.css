@@ -1,7 +1,17 @@
 .table-striped tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
-  }
-  
-  .table-striped tbody tr:nth-child(odd) {
-    background-color: #ffffff;
-  }
+  background-color: #f2f2f2;
+}
+
+.table-striped tbody tr:nth-child(odd) {
+  background-color: #ffffff;
+}
+
+input {
+  margin-right: 2.5rem !important;
+  height: 100%;
+  width: 17vw;
+}
+
+#btn-filtrar {
+  width: 8rem;
+}

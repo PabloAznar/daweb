@@ -11,25 +11,28 @@ var app = express()
     let nombre = req.body.nombre
     let estacion = req.body.estacion
     let numeroBicicletas = req.body.numeroBicicletas
-
+    let nombreEstacion = req.body.nombreEstacion
     bbdd.getConnection()
     .then(con => { 
-        return bbdd.registrarBicicleta(con, nombre, estacion, numeroBicicletas)
+        return bbdd.registrarBicicleta(con, nombre, estacion, nombreEstacion, numeroBicicletas)
     })
     .then(result => {
         res.send("Bicicleta dada de alta")
     })
-    .catch(error => {console.log(error)});
+    .catch(error => {
+      console.log(error)
+      res.status(500).send(error.message)
+    });
   });
 
   router.get("/estacion/:idEstacion", function(req, res, next) {
     let idEstacion = req.params.idEstacion;
     bbdd.getConnection()
     .then(con => {
-        return bbdd.obtenerBicicletasByEstacion(con, idEstacion)
+      return obtenerDisponiblesByEstacion(con, idEstacion)
     })
     .then(data => {
-        res.render('bicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
+        res.send(data)
     })
     .catch(error => {console.log(error)})
   })
@@ -38,10 +41,22 @@ var app = express()
     let idEstacion = req.params.idEstacion;
     bbdd.getConnection()
     .then(con => {
-        return bbdd.obtenerBicicletasByEstacion(con, idEstacion)
+      return obtenerDisponiblesByEstacion(con, idEstacion)
     })
     .then(data => {
         res.send(data)
+    })
+    .catch(error => {console.log(error)})
+  })
+
+  router.delete("/estacion/:id", function(req, res, next) {
+    let idEstacion = req.params.id
+    bbdd.getConnection()
+    .then(con => {
+        return bbdd.eliminarBicicletasEnEstacion(con, idEstacion)
+    })
+    .then(result => {
+        res.send("Bicicleta eliminada")
     })
     .catch(error => {console.log(error)})
   })
@@ -58,11 +73,10 @@ var app = express()
     .catch(error => {console.log(error)})
   })
 
-  router.put("/:id/reservar", function(req, res, next) {
-    let idBicicleta = req.params.id
+  router.put("/:idBicicleta/reservar", function(req, res, next) {
+    let idBicicleta =  req.params.idBicicleta
     bbdd.getConnection()
     .then(con => {
-        bbddReservas.reservarBicicleta(con, 0, id)
         return bbdd.reservarBicicleta(con, idBicicleta)
     })
     .then(result => {
@@ -72,15 +86,63 @@ var app = express()
   })
 
   router.get("/disponibles", function(req, res, next) {
-    let idEstacion = req.params.idEstacion;
     bbdd.getConnection()
     .then(con => {
-        return bbdd.obtenerBicicletasDisponibles(con)
+        return obtenerDisponibles(con)
     })
     .then(data => {
-        res.render('reservaBicicletas', {'tittle' : 'Bicicletas', 'bicicleta' : data} )
+        res.render('reservaBicicletas', {'tittle' : 'Reservar bicicletas', 'bicicleta' : data} )
     })
     .catch(error => {console.log(error)})
+  })
+
+  async function obtenerDisponibles(con) {
+    let ids = await bbdd.obtenerBicicletasConReservaCaducada(con)
+      for(const id of ids) {
+        await bbdd.establecerDisponible(con, id.idBicicleta)
+        await bbddReservas.establecerNoValida(con, id.idReserva)
+      }
+        return await bbdd.obtenerBicicletasDisponibles(con)
+  }
+
+  async function obtenerDisponiblesByEstacion(con, idEstacion) {
+    let ids = await bbdd.obtenerBicicletasConReservaCaducada(con)
+      for(const id of ids) {
+        await bbdd.establecerDisponible(con, id.idBicicleta)
+        await bbddReservas.establecerNoValida(con, id.idReserva)
+      }
+        return await bbdd.obtenerBicicletasByEstacion(con, idEstacion)
+  }
+
+  router.put("/:idBicicleta/estacion/:idEstacion/aparcar", function (req, res, next) {
+    let idEstacion = req.params.idEstacion
+    let idBicicleta = req.params.idBicicleta
+    let nombreEstacion = req.body.estacion
+  
+    bbdd.getConnection()
+      .then(con => {
+        return bbdd.aparcarBicicleta(con, idEstacion, idBicicleta, nombreEstacion)
+      })
+      .then(data => {
+        res.send(data)
+      })
+      .catch(error => { console.log(error) })
+  })
+
+  router.delete("estacion/:id", function(req, res, next) {
+    let idEstacion = req.params.id
+
+    bbdd.getConnection()
+    .then(con => {
+      return bbdd.eliminarBicicletasPorEstacion(con, idEstacion)
+    })
+    .then(result => {
+      return res.send(result)
+    })
+    .catch(error => {
+      console.log(error)
+      res.status(500).send(error.message)
+    })
   })
 
   module.exports = router;

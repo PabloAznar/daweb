@@ -20,7 +20,13 @@ var bbdd = require('../javascripts/respositorioUsuarios');
     .then(result => {
         res.send(result)
     })
-    .catch(error => {console.log(error)});
+    .catch(error => {console.log(error)
+      res.status(500).send({
+        success: false,
+        message: 'Ya existe un usuario con ese correo',
+        error: error.message
+    });
+    });
   });
 
   module.exports = router;

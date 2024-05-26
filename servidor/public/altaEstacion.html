@@ -1,33 +1,64 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
-    <meta charset="UTF-8"> 
-    <title>CityBike</title>
-  </head>
 
-  <body>
-    <div id="header-container"></div>
+<head>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="stylesheets/style.css" rel="stylesheet">
+  <meta charset="UTF-8">
+  <title>CityBike</title>
+</head>
 
-    <div class="containefluid">
-        <h1 class="text-center">Alta Estacion</h1>
-        <form id="altaEstacionForm">
-            <div class="mb-3">
-                <label for="nombreEstacion" class="form-label">Nombre de la estación</label>
-                <input type="text" class="form-control" id="nombreEstacion" required>
+<body>
+  <div id="header-container"></div>
+  <div id="panel-alta"></div>
+  <div class="container-fluid form-margin">
+    <div class="row justify-content-center">
+      <div class="col-md-7">
+        <h1 class="text-center" style="margin-top: 2rem;">Alta Estacion</h1>
+        <form id="altaEstacionForm" style="margin-top: 2rem;">
+          <div class="mb-3">
+            <label for="nombreEstacion" class="form-label">Nombre de la estación</label>
+            <input type="text" class="form-control" id="nombreEstacion" required>
+          </div>
+          <div class="col-sm-9 mt-2 mb-3" id="campo-nombre" style="display: none;">
+            <span class="alert alert-danger">Introduzca el nombre de la estación</span>
+          </div>
+          <div class="mb-3">
+            <label for="capacidad" class="form-label">Capacidad</label>
+            <input type="number" step="1" class="form-control" id="capacidad" required>
+          </div>
+          <div class="form-group row mb-4" id="campo-capacidad" style="display: none;">
+            <div class="col-sm-9 mt-4">
+              <span class="alert alert-danger">Introduzca la capacidad de la estación</span>
             </div>
-            <div class="mb-3">
-                <label for="capacidad" class="form-label">Capacidad</label>
-                <input type="number" step="1" class="form-control" id="capacidad" required>
+          </div>
+          <div class="form-group row mb-4" id="campo-valor-capacidad" style="display: none;">
+            <div class="col-sm-9 mt-4">
+              <span class="alert alert-danger">La capacidad no puede ser igual o menor a 0</span>
             </div>
-            <div class="mb-3">
-                <label for="codigoPostal" class="form-label">Código postal</label>
-                <input type="text" class="form-control" id="codigoPostal" required>
+          </div>
+          <div class="mb-3">
+            <label for="codigoPostal" class="form-label">Código postal</label>
+            <input type="text" class="form-control" id="codigoPostal" required>
+          </div>
+          <div class="col-sm-9 mt-2 mb-3" id="campo-codigo-postal" style="display: none;">
+            <span class="alert alert-danger">Introduzca el código postal de la estación</span>
+          </div>
+          <button id="btnAltaEstacion" type="submit" class="btn btn-primary">Registrar Estación</button>
+          <div id="error-estacion" class="form-group row mb-4" style="display: none;">
+            <div class="col-sm-9 mt-4">
+              <span class="alert alert-danger">Ya existe una estación con ese nombre</span>
             </div>
-            <button id="btnAltaEstacion" type="submit" class="btn btn-primary">Registrar Estación</button>
+          </div>
         </form>
+      </div>
     </div>
-    <script src="javascripts/altaEstacion.js"></script>
-    <script src="javascripts/header.js"></script>
-  </body>
+  </div>
+</body>
+<div id="footer-container"></div>
+<script src="javascripts/altaEstacion.js"></script>
+<script src="javascripts/header.js"></script>
+<script src="javascripts/footer.js"></script>
+</body>
+
 </html>
