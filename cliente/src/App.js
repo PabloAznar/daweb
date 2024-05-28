@@ -1,6 +1,6 @@
 import React from "react";
 import Footer from "./footer";
-import GestionBicicletas from "./GestionBicicletas";
+import GestionEstaciones from "./GestionEstaciones";
 import RegistrarUsuario from "./RegistrarUsuario";
 import Header from "./header";
 import './App.css';
@@ -20,7 +20,7 @@ function App() {
             <Route path="/usuario/:idUsuario" component={SetUsuario}/>
             <Route path="/logout" component={DropUsuario}/>
             <Route path="/registrar" component={RegistrarUsuario}/>
-            <Route path="/citybike" component={GestionBicicletas}/>
+            <Route path="/citybike" component={GestionEstaciones}/>
             <Route path="/estaciones/:idEstacion/bicicletas" component={ReservaBicicletas}/>
             <Route path="/estacion/modificar/:idEstacion" component={ModificarEstacion}/>
           </Switch>

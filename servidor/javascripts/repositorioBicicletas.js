@@ -32,7 +32,8 @@ async function getConnection() {
     }
 
     async function reservarBicicleta(connection, idBicicleta) {
-        let result = connection.execute("UPDATE BICICLETA SET reservada = ? WHERE id_bicicleta = ?", [true, idBicicleta])
+        let result = connection.execute("UPDATE BICICLETA SET reservada = ?, ultima_reserva = ?, numero_reservas = numero_reservas + 1 WHERE id_bicicleta = ?",
+         [true, new Date(), idBicicleta])
         return result;
     }
 

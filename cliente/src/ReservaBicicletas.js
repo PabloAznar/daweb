@@ -79,8 +79,8 @@ function ReservaBicicletas(props) {
             <tr>
               <th className="bg-primary border">Bicicleta</th>
               <th className="bg-primary border">Fecha alta</th>
-              <th className="bg-primary border">Ultimo alquiler</th>
-              <th className="bg-primary border">Numero alquileres</th>
+              <th className="bg-primary border">Ultima reserva</th>
+              <th className="bg-primary border">Numero reservas</th>
               <th className="bg-primary border">Reservada</th>
               <th className="bg-primary border">Acciones</th>
             </tr>
@@ -90,7 +90,7 @@ function ReservaBicicletas(props) {
               <tr key={bicicleta.id_bicicleta}>
                 <td className="border">{bicicleta.nombre}</td>
                 <td className="border">{bicicleta.fecha_creacion}</td>
-                <td className="border">{bicicleta.ultimo_alquiler}</td>
+                <td className="border">{bicicleta.ultima_reserva}</td>
                 <td className="border">{bicicleta.numero_reservas}</td>
                 <td className="border">{bicicleta.reservada ? 'Sí' : 'No'}</td>
                 <td className="border">
